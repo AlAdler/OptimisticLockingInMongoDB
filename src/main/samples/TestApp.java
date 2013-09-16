@@ -1,4 +1,5 @@
 import com.mongodb.*;
+import org.bson.types.ObjectId;
 
 import java.net.UnknownHostException;
 
@@ -29,11 +30,10 @@ public class TestApp {
         dao.save(redCar);
 
         //change the original object and try to save the changes. It will fail because the document is dirty.
-        try{
-        car.setColor("dark red");
-        dao.save(car);
-        }
-        catch (MongoException exc){
+        try {
+            car.setColor("dark red");
+            dao.save(car);
+        } catch (MongoException exc) {
             exc.printStackTrace();
         }
     }
